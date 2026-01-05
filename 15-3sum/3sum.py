@@ -3,7 +3,7 @@ class Solution:
         nums.sort()
         result = []
 
-        for i in range(len(nums)-2):
+        for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
 
@@ -20,7 +20,7 @@ class Solution:
                     right -= 1
 
                     while left < right and nums[left] == nums[left - 1]:
-                        left += 1
+                       left += 1
                     while left < right and nums[right] == nums[right + 1]:
                         right -= 1
 
