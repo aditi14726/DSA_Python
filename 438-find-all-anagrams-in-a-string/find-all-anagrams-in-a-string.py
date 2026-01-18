@@ -1,21 +1,25 @@
+from typing import List
+
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         if len(p) > len(s):
             return []
 
         res = []
-        pCount = [0] * 26
-        window = [0] * 26
+        pCount = {}
+        window = {}
 
         for ch in p:
-            pCount[ord(ch) - ord('a')] += 1
+            pCount[ch] = pCount.get(ch, 0) + 1
 
         left = 0
         for right in range(len(s)):
-            window[ord(s[right]) - ord('a')] += 1
+            window[s[right]] = window.get(s[right], 0) + 1
 
             if right - left + 1 > len(p):
-                window[ord(s[left]) - ord('a')] -= 1
+                window[s[left]] -= 1
+                if window[s[left]] == 0:
+                    del window[s[left]]
                 left += 1
 
             if window == pCount:
