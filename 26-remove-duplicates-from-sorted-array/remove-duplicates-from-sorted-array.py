@@ -1,15 +1,13 @@
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int: 
-        unique_arr = []
-        for num in nums:
-            if num not in unique_arr:
-                unique_arr.append(num)
-        #for i in range(len(unique_arr)):
-         #   nums[i] = unique_arr[i]
-        nums[:]=unique_arr
-        return len(unique_arr)
-
-
-
-
+    def removeDuplicates(self, nums) -> int:
+        if not nums:
+            return 0
         
+        write_index = 1
+        
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                nums[write_index] = nums[i]
+                write_index += 1
+        
+        return write_index
