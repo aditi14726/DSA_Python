@@ -1,15 +1,13 @@
 class Solution:
-    def findDuplicates(self, nums: List[int]) -> List[int]: 
-        unique_set = set()      # 👈 list ki jagah set
+    def findDuplicates(self, nums: List[int]) -> List[int]:
         duplicates = []
-        i = 0
 
-        while i < len(nums):
-            if nums[i] not in unique_set:
-                unique_set.add(nums[i])
-                i += 1
+        for i in range(len(nums)):
+            idx = abs(nums[i]) - 1
+
+            if nums[idx] < 0:
+                duplicates.append(abs(nums[i]))
             else:
-                duplicates.append(nums[i])
-                nums.pop(i)
+                nums[idx] = -nums[idx]
 
         return duplicates
