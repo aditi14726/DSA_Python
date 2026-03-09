@@ -1,7 +1,6 @@
 class Solution:
     def maxDistinct(self, s: str) -> int:
-        new_s=""
+        new_s= set()
         for i in s:
-            if i not in new_s:
-                new_s+=i
+                new_s.add(i)
         return len(new_s)
